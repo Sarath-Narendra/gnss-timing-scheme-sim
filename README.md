@@ -17,7 +17,7 @@ A Raspberry Pi Pico runs the scheme in C. A simulated GNSS chip sends it PPS and
 - With GNSS switched off, photos keep coming every second, timed on N.
 - When GNSS returns, the pulse lands 0 µs from the prediction and the MCU's own count of the second matches GNSS.
 
-Live project: **[add Wokwi link]**
+Live project (press play, flip the switch to cut GNSS): **https://wokwi.com/projects/480926110963710977**
 
 ## 2. Full-mission timing simulation (Python) → [`python/`](python/)
 This simulates every photo of the mission: 1 h powered on the ground plus the required 5.5 h of ascent and float. It includes crystal drift, temperature, NMEA loss and two GNSS outages (60 s and 15 min).
