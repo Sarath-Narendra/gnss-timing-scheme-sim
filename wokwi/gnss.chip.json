@@ -1,0 +1,6 @@
+{
+  "name": "GNSS Receiver",
+  "author": "Sarath Narendra",
+  "pins": ["EN", "GND", "", "RX", "TX", "PPS"],
+  "controls": []
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "Sarath Narendra",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "chip-gnss", "id": "gnss", "top": 60, "left": -150, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": -40, "left": -140, "attrs": { "value": "1" } },
+    { "type": "wokwi-led", "id": "ledPPS", "top": 180, "left": -100, "attrs": { "color": "green", "label": "PPS" } },
+    { "type": "wokwi-led", "id": "ledCAM", "top": 180, "left": 130, "attrs": { "color": "red", "label": "CAMERA" } }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "gnss:TX", "pico:GP1", "blue", [] ],
+    [ "gnss:PPS", "pico:GP2", "green", [] ],
+    [ "gnss:PPS", "ledPPS:A", "green", [] ],
+    [ "ledPPS:C", "pico:GND.2", "black", [] ],
+    [ "gnss:GND", "pico:GND.1", "black", [] ],
+    [ "sw1:2", "gnss:EN", "orange", [] ],
+    [ "sw1:1", "pico:GND.1", "black", [] ],
+    [ "sw1:3", "pico:3V3", "red", [] ],
+    [ "pico:GP15", "ledCAM:A", "red", [] ],
+    [ "ledCAM:C", "pico:GND.4", "black", [] ]
+  ],
+  "dependencies": {}
+}
