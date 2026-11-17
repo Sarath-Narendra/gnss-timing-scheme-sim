@@ -1,5 +1,11 @@
 # GNSS/PPS photo time-stamping: simulations of my timing scheme
 
+
+
+https://github.com/user-attachments/assets/0bf0c246-3c0c-46d4-b209-aae40b27eef9
+
+
+
 This repo tests the timing scheme from my design assessment for the **Payload Integration and Testing Intern** role at Digantara. The task was a balloon imaging payload that time-stamps every photo to within **1 ms** of UTC using a GNSS receiver (PPS pulse + NMEA time).
 
 **The scheme in one paragraph:** The MCU timer captures every PPS pulse and measures **N**, the number of ticks in one real second, averaged over the last 16 pulses. The camera is fired in hardware at the tick where the next pulse is expected (last pulse + N), so no delay is added. If the pulse arrives within ±1 ms, the MCU locks to it. If it is missing, the photo is already taken and the MCU keeps firing on N. Each photo is labelled with the UTC second from the NMEA message that follows its pulse, or last + 1 if that message is lost.
