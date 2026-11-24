@@ -1,6 +1,6 @@
 # GNSS/PPS photo time-stamping: flight simulation
 
-Simulates the payload timing scheme from my Digantara payload design assessment
+Simulates the timing scheme from my stratospheric balloon imaging payload design
 over a full 6.5 h flight (1 h on the ground, 90 min ascent, 4 h float), one second at a time.
 
 Run:
