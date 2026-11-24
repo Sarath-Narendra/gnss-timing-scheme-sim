@@ -11,6 +11,11 @@ This repo tests the timing scheme from my design assessment for the **Payload In
 **The scheme in one paragraph:** The MCU timer captures every PPS pulse and measures **N**, the number of ticks in one real second, averaged over the last 16 pulses. The camera is fired in hardware at the tick where the next pulse is expected (last pulse + N), so no delay is added. If the pulse arrives within ±1 ms, the MCU locks to it. If it is missing, the photo is already taken and the MCU keeps firing on N. Each photo is labelled with the UTC second from the NMEA message that follows its pulse, or last + 1 if that message is lost.
 Stamp = UTC second + (strobe tick − pulse tick) / N.
 
+## 0. System design → [`docs/DESIGN.md`](docs/DESIGN.md)
+The full payload design behind these simulations: block diagram, timing error budget, data/storage and telemetry budgets, single-fault handling, power budget, thermal design and the test plan, with every calculation shown.
+
+![Payload block diagram](docs/block_diagram.png)
+
 ## 1. Microcontroller simulation (Wokwi) → [`wokwi/`](wokwi/)
 A Raspberry Pi Pico runs the scheme in C. A simulated GNSS chip sends it PPS and NMEA, and a switch cuts GNSS. It shows the logic working:
 - The camera fires within about 2 µs of each pulse.
